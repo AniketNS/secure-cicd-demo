@@ -56,6 +56,13 @@ jobs:
           severity: HIGH,CRITICAL
           ignore-unfixed: true
           exit-code: "1"
+          format: json
+          output: trivy-fs.json
+          list-all-pkgs: true
+
+      - name: Show results in the job summary
+        if: always()
+        run: ./scripts/trivy-summary.sh trivy-fs.json "Trivy filesystem scan"
 
   docker:
     name: Docker Build and Trivy Image Scan
@@ -76,3 +83,10 @@ jobs:
           severity: HIGH,CRITICAL
           ignore-unfixed: true
           exit-code: "1"
+          format: json
+          output: trivy-image.json
+          list-all-pkgs: true
+
+      - name: Show results in the job summary
+        if: always()
+        run: ./scripts/trivy-summary.sh trivy-image.json "Trivy image scan"
