@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+.git
+.github
+.env
+*.pem
+lcov.info
+coverage
+test
+scripts
+README.md

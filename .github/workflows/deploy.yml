@@ -1,0 +1,34 @@
+name: Build and Deploy
+
+# Runs only after a PR has passed every required check and been merged to main.
+# The deploy step is a placeholder: wire it to your EC2 instance in the next step.
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-main
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    # Optional: create a "production" environment in repo settings to add a
+    # manual approval gate or environment-scoped secrets for the EC2 deploy.
+    environment: production
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Build the image
+        run: docker build -t secure-cicd-demo:${{ github.sha }} .
+
+      # TODO (EC2): replace this step. Typical options:
+      #   - SSH to the instance, pull the image from ECR and restart the container
+      #   - or AWS SSM Run Command, using GitHub OIDC for short-lived AWS credentials
+      #     (no long-lived AWS keys stored in GitHub)
+      - name: Deploy (placeholder)
+        run: echo "Deploying secure-cicd-demo:${{ github.sha }} to EC2 (not wired yet)"
