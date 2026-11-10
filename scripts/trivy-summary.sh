@@ -12,14 +12,13 @@ OUT="${GITHUB_STEP_SUMMARY:-/dev/stdout}"
 packages=$(jq '[.Results[]?.Packages[]?] | length' "$JSON")
 vulns=$(jq '[.Results[]?.Vulnerabilities[]?] | length' "$JSON")
 secrets=$(jq '[.Results[]?.Secrets[]?] | length' "$JSON")
-misconfigs=$(jq '[.Results[]?.Misconfigurations[]?] | length' "$JSON")
 
 {
   echo "## $TITLE"
   echo
-  echo "| Packages scanned | HIGH/CRITICAL vulnerabilities | Secrets | Misconfigurations |"
-  echo "|---:|---:|---:|---:|"
-  echo "| $packages | $vulns | $secrets | $misconfigs |"
+  echo "| Packages scanned | HIGH/CRITICAL vulnerabilities | Secrets |"
+  echo "|---:|---:|---:|"
+  echo "| $packages | $vulns | $secrets |"
   echo
 
   if [ "$vulns" -gt 0 ]; then
