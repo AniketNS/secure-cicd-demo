@@ -27,7 +27,7 @@
       "parameters": {
         "strict_required_status_checks_policy": true,
         "required_status_checks": [
-          { "context": "SonarQube Cloud Scan" },
+          { "context": "SonarQube Scan" },
           { "context": "Trivy Filesystem Scan" },
           { "context": "Docker Build and Trivy Image Scan" }
         ]
