@@ -51,3 +51,10 @@ docker build -t secure-cicd-demo . && docker run -p 3000:3000 secure-cicd-demo
 trivy fs --scanners vuln,secret,misconfig --severity HIGH,CRITICAL .
 trivy image --severity HIGH,CRITICAL secure-cicd-demo
 ```
+
+## Contributing
+
+1. Create a new branch for your changes.
+2. Commit your changes and push the branch.
+3. Open a pull request against `main`.
+4. Wait for all required security checks to pass before merging.
