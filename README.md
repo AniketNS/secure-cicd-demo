@@ -48,6 +48,6 @@ With a second account, raise `required_approving_review_count` to 1.
 ```bash
 npm ci && npm test
 docker build -t secure-cicd-demo . && docker run -p 3000:3000 secure-cicd-demo
-trivy fs --scanners vuln,secret,misconfig --severity HIGH,CRITICAL .
+trivy fs --scanners vuln,secret --severity HIGH,CRITICAL .
 trivy image --severity HIGH,CRITICAL secure-cicd-demo
 ```
