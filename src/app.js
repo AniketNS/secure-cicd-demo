@@ -6,7 +6,7 @@ const app = express();
 app.disable('x-powered-by');
 
 app.get('/', (_req, res) => {
-  res.json({ service: 'secure-cicd-demo', message: 'Hello from a protected pipeline' });
+  res.json({ service: 'secure-cicd-demo', message: 'Hello from a protected pipeline.' });
 });
 
 app.get('/health', (_req, res) => {
